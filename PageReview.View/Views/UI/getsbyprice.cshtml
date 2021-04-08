@@ -1,0 +1,80 @@
+﻿@using X.PagedList.Mvc.Core;
+@using X.PagedList;
+@model IPagedList<ProductView>
+@{ ViewData["Title"] = "Product theo giá bán";
+    Layout = "~/Views/Shared/_UI1.cshtml"; }
+<style>
+    ul li {
+        display: inline;
+    }
+    #background {
+        background: url("/images/notfound.png") no-repeat center;
+        height: 1000px;
+    }
+</style>
+@if (ViewBag.Price == 1)
+{
+<h2>Product có giá bé hơn 500.000 VND</h2> }
+else if (ViewBag.Price == 2)
+{
+<h2>Product có giá từ 500.000 VND - 1.000.000 VND</h2> }
+else if (ViewBag.Price == 3)
+{
+<h2>Product có giá từ 1.000.000 VND - 3.000.000 VND</h2> }
+else if (ViewBag.Price == 4)
+{
+<h2>Product có giá từ 3.000.000 VND - 10.000.000 VND</h2> }
+else
+{
+<h2>Product có giá từ 10.000.000 VND trở lên</h2>}
+<br />
+        @if (Model.Count != 0)
+        {
+<div class="gallery-bottom">
+    <div class="row">
+    @foreach (var item in Model)
+    {
+    @if (!item.Deleted)
+    {
+    <div class="col-md-4 gallery-grid">
+        <div style="height: 140px; ">
+            <a asp-controller="UI" asp-action="Details" asp-route-id="@item.Id" class="example-image-link" data-lightbox="example-set" data-title="Click the right half of the image to move forward.">
+                <img class="example-image" src="/images/@item.Image" alt="" style="width: 200px; text-align: center;height: 140px;" />
+            </a>
+        </div>
+        <div style="width: 200px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;">
+            <a asp-controller="UI" asp-action="Details" asp-route-id="@item.Id"><label>@item.ProductName</label> </a></div>
+            <ul>
+                <li>
+                    <a href="#">
+                        <i class="far fa-calendar-alt"></i> @item.DateofSale.ToString().Substring(0, 10)
+                    </a>
+                </li>
+                <li class="mx-2">
+                    <a href="#">
+                        <i class="fas fa-star"></i> @item.NumberofVote
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="far fa-comment"></i> @item.NumberofComment
+                    </a>
+                </li>
+
+            </ul>
+            <p>@string.Format("{0:#,0}", @item.Price) VND</p>
+        </div>}}
+        <div class="clearfix"></div>
+    </div>
+</div>}
+        else
+        {
+    <div id="background">Không tìm thấy kết quả nào phù hợp</div>}
+<div>@Html.PagedListPager(Model, page => Url.Action($"Search", new { page }))</div>
+
+@section scripts{
+
+}

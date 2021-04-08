@@ -1,0 +1,67 @@
+﻿@using X.PagedList.Mvc.Core;
+@using X.PagedList;
+@model IPagedList<ProductView>
+@{ ViewData["Title"] = "Product by brand";
+    Layout = "~/Views/Shared/_UI1.cshtml"; }
+<style>
+    ul li {
+        display: inline;
+    }
+    #background {
+        background: url("/images/notfound.png") no-repeat center;
+        height:1000px;
+    }
+</style>
+    @if (Model.Count != 0)
+    {
+    <h2>Product by @Model[0].BrandName</h2><br />
+    <div class="gallery-bottom">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+@if (!item.Deleted)
+{
+<div class="col-md-4 gallery-grid">
+    <div style="height: 140px;">
+        <a asp-controller="UI" asp-action="Details" asp-route-id="@item.Id" class="example-image-link" data-lightbox="example-set" data-title="Click the right half of the image to move forward.">
+            <img class="example-image" src="/images/@item.Image" alt="" style="width: 200px; text-align: center; height: 140px;" />
+        </a>
+    </div>
+    <div style="width: 200px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;">
+        <a asp-controller="UI" asp-action="Details" asp-route-id="@item.Id"><label>@item.ProductName</label> </a></div>
+        <ul>
+            <li>
+                <a href="#">
+                    <i class="far fa-calendar-alt"></i> @item.DateofSale.ToString().Substring(0, 10)
+                </a>
+            </li>
+            <li class="mx-2">
+                <a href="#">
+                    <i class="fas fa-star"></i> @item.NumberofVote
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="far fa-comment"></i> @item.NumberofComment
+                </a>
+            </li>
+
+        </ul>
+        <p>@string.Format("{0:#,0}", @item.Price) VND</p>
+    </div>}}
+        <div class="clearfix"></div>
+    </div>
+</div>
+    }
+    else
+    {
+        <div id="background">Không tìm thấy kết quả nào phù hợp</div>
+    }
+<div>@Html.PagedListPager(Model, page => Url.Action($"getsbybrand", new { page }))</div>
+
+@section scripts{
+
+}

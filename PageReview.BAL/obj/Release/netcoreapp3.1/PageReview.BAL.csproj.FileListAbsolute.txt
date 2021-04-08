@@ -1,0 +1,16 @@
+C:\Users\hoangtx\Desktop\PageReview\PageReview\PageReview.BAL\bin\Release\netcoreapp3.1\PageReview.BAL.deps.json
+C:\Users\hoangtx\Desktop\PageReview\PageReview\PageReview.BAL\bin\Release\netcoreapp3.1\PageReview.BAL.dll
+C:\Users\hoangtx\Desktop\PageReview\PageReview\PageReview.BAL\bin\Release\netcoreapp3.1\PageReview.BAL.pdb
+C:\Users\hoangtx\Desktop\PageReview\PageReview\PageReview.BAL\bin\Release\netcoreapp3.1\PageReview.BAL.Interface.dll
+C:\Users\hoangtx\Desktop\PageReview\PageReview\PageReview.BAL\bin\Release\netcoreapp3.1\PageReview.DAL.Interface.dll
+C:\Users\hoangtx\Desktop\PageReview\PageReview\PageReview.BAL\bin\Release\netcoreapp3.1\PageReview.Domain.dll
+C:\Users\hoangtx\Desktop\PageReview\PageReview\PageReview.BAL\bin\Release\netcoreapp3.1\PageReview.BAL.Interface.pdb
+C:\Users\hoangtx\Desktop\PageReview\PageReview\PageReview.BAL\bin\Release\netcoreapp3.1\PageReview.DAL.Interface.pdb
+C:\Users\hoangtx\Desktop\PageReview\PageReview\PageReview.BAL\bin\Release\netcoreapp3.1\PageReview.Domain.pdb
+C:\Users\hoangtx\Desktop\PageReview\PageReview\PageReview.BAL\obj\Release\netcoreapp3.1\PageReview.BAL.csprojAssemblyReference.cache
+C:\Users\hoangtx\Desktop\PageReview\PageReview\PageReview.BAL\obj\Release\netcoreapp3.1\PageReview.BAL.AssemblyInfoInputs.cache
+C:\Users\hoangtx\Desktop\PageReview\PageReview\PageReview.BAL\obj\Release\netcoreapp3.1\PageReview.BAL.AssemblyInfo.cs
+C:\Users\hoangtx\Desktop\PageReview\PageReview\PageReview.BAL\obj\Release\netcoreapp3.1\PageReview.BAL.csproj.CoreCompileInputs.cache
+C:\Users\hoangtx\Desktop\PageReview\PageReview\PageReview.BAL\obj\Release\netcoreapp3.1\PageReview.BAL.csproj.CopyComplete
+C:\Users\hoangtx\Desktop\PageReview\PageReview\PageReview.BAL\obj\Release\netcoreapp3.1\PageReview.BAL.dll
+C:\Users\hoangtx\Desktop\PageReview\PageReview\PageReview.BAL\obj\Release\netcoreapp3.1\PageReview.BAL.pdb

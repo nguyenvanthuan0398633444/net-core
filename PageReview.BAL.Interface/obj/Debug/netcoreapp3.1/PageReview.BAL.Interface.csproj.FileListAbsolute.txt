@@ -1,0 +1,14 @@
+C:\Users\hoangtx\Desktop\PageReview\PageReview\PageReview.BAL.Interface\bin\Debug\netcoreapp3.1\PageReview.BAL.Interface.deps.json
+C:\Users\hoangtx\Desktop\PageReview\PageReview\PageReview.BAL.Interface\bin\Debug\netcoreapp3.1\PageReview.BAL.Interface.dll
+C:\Users\hoangtx\Desktop\PageReview\PageReview\PageReview.BAL.Interface\bin\Debug\netcoreapp3.1\PageReview.BAL.Interface.pdb
+C:\Users\hoangtx\Desktop\PageReview\PageReview\PageReview.BAL.Interface\bin\Debug\netcoreapp3.1\PageReview.DAL.Interface.dll
+C:\Users\hoangtx\Desktop\PageReview\PageReview\PageReview.BAL.Interface\bin\Debug\netcoreapp3.1\PageReview.Domain.dll
+C:\Users\hoangtx\Desktop\PageReview\PageReview\PageReview.BAL.Interface\bin\Debug\netcoreapp3.1\PageReview.DAL.Interface.pdb
+C:\Users\hoangtx\Desktop\PageReview\PageReview\PageReview.BAL.Interface\bin\Debug\netcoreapp3.1\PageReview.Domain.pdb
+C:\Users\hoangtx\Desktop\PageReview\PageReview\PageReview.BAL.Interface\obj\Debug\netcoreapp3.1\PageReview.BAL.Interface.csprojAssemblyReference.cache
+C:\Users\hoangtx\Desktop\PageReview\PageReview\PageReview.BAL.Interface\obj\Debug\netcoreapp3.1\PageReview.BAL.Interface.AssemblyInfoInputs.cache
+C:\Users\hoangtx\Desktop\PageReview\PageReview\PageReview.BAL.Interface\obj\Debug\netcoreapp3.1\PageReview.BAL.Interface.AssemblyInfo.cs
+C:\Users\hoangtx\Desktop\PageReview\PageReview\PageReview.BAL.Interface\obj\Debug\netcoreapp3.1\PageReview.BAL.Interface.csproj.CoreCompileInputs.cache
+C:\Users\hoangtx\Desktop\PageReview\PageReview\PageReview.BAL.Interface\obj\Debug\netcoreapp3.1\PageReview.BAL.Interface.csproj.CopyComplete
+C:\Users\hoangtx\Desktop\PageReview\PageReview\PageReview.BAL.Interface\obj\Debug\netcoreapp3.1\PageReview.BAL.Interface.dll
+C:\Users\hoangtx\Desktop\PageReview\PageReview\PageReview.BAL.Interface\obj\Debug\netcoreapp3.1\PageReview.BAL.Interface.pdb

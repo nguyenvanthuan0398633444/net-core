@@ -1,0 +1,142 @@
+﻿@model IEnumerable<ApplicationUser>
+@{
+    ViewData["Title"] = "Brand";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+<table id="tbModule" class="table table-bordered table-hover table-primary mt-2">
+    <thead>
+        <tr>
+            <th>
+                UserName
+            </th>
+            <th>
+                FullName
+            </th>
+            <th>
+                Address
+            </th>
+            <th>
+                Gender
+            </th>
+            <th>
+                Dob
+            </th>
+            <th>
+                Company
+            </th>
+            <th>
+                Image
+            </th>
+            <th></th>
+            <th>Admin</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.UserName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.FullName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Address)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Gender)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DoB)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Company)
+    </td>
+    <td>
+        <img width="70" style="border-radius: 50%" src="~/images/Avatar/@item.ImagePath" alt="avatar" />
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Update", new { id = item.Id }) | 
+        @Html.ActionLink("Delete", "ChangeStatus", new { id = item.Id }) | 
+        @Html.ActionLink("Detail", "Detail", new { id = item.Id }) |
+        @Html.ActionLink("Reset Pass", "ResetPass", new { id = item.Id })
+    </td>
+    <td>
+        <div id="@item.Id"></div>
+    </td>
+</tr>}
+    </tbody>
+</table>
+@section Scripts{ 
+    <script>
+        var Admin = [];
+        $(document).ready(function () {
+            $.ajax({
+                url: `/account/GetsAdmin`,
+                method: 'Get',
+                dataType: 'JSON',
+                success: function (response) {
+                    $.each(response, function (i, v) {
+                        Admin.push(v.userId);
+                        console.log('add');
+                    });
+
+                }
+            });
+            gets();
+            $('#tbModule').DataTable();
+        });
+        var gets = function () {
+            $.ajax({
+                url: `/account/Gets`,
+                method: 'Get',
+                dataType: 'JSON',
+                success: function (response) {
+                    $.each(response, function (i, v) {
+                        if (Admin.includes(v.id)) {
+                            $(`#${v.id}`).empty();
+                            $(`#${v.id}`).append(`
+                                <a href="/Account/AddRole/${v.id}">Remove Admin</a>
+                            `);
+                        }
+                        else {
+                            $(`#${v.id}`).empty();
+                            $(`#${v.id}`).append(`
+                                <a href="/Account/AddRole/${v.id}">Add Admin</a>
+                            `);
+                        }
+                    });
+                }
+            });
+        }
+        
+
+
+        var addrole = function (userId) {
+            $.ajax({
+                url: `/account/AddRole1/${userId}`,
+                method: 'Post',
+                dataType: 'JSON',
+                data: userId,
+                success: function (response) {
+                    console.log(response);
+                    if (response.message = "add") {
+                        $(`#${userId}`).append(`
+                            <a href="/Account/AddRole/${userId}">Add Admin</a>
+                            `);
+                    }
+                    else if (response.message = "remove") {
+                        $(`#${userId}`).append(`
+                            <a href="/Account/AddRole/${userId}">Remove Admin</a>
+                            `);
+                    }
+
+                },
+                error: function () {
+                    alert(response.result.message);
+                }
+            });
+        }
+    </script>
+}

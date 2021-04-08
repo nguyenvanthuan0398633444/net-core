@@ -1,0 +1,62 @@
+﻿@model Resetpass
+@{
+    ViewData["Title"] = "Reset password";
+    Layout = "~/Views/Shared/_UI(1).cshtml";
+}
+<div class="banner-inner">
+</div>
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="/ui">Home</a>
+    </li>
+    <li class="breadcrumb-item active">Reset PassWord</li>
+</ol>
+<!--//banner-->
+<!--/main-->
+<section class="main-content-w3layouts-agileits">
+    <div class="container">
+        <h3 class="tittle">Update PassWord</h3>
+        <div class="inner-sec">
+            <div class="login p-5 bg-light mx-auto mw-100">
+                <div>
+                    <input value="@ViewBag.Message" hidden id="value" />
+                    @if (ViewBag.Id == 1)
+                    {
+                        <script type="text/javascript">
+
+            window.onload = function () {
+                alert("@ViewBag.Message");
+            };
+                        </script>
+                        <p class="alert alert-success" id="succes" value="@ViewBag.Message" onchange="change()">Update is successful!</p> }
+                    else if (ViewBag.Id == 0)
+                    {
+                        <script type="text/javascript">
+
+            window.onload = function () {
+                alert("@ViewBag.Message");
+            };
+                        </script>
+                        <p class="alert alert-danger" id="succes" value="@ViewBag.Message" onchange="change()">Update is Unsuccessful!</p>}
+                </div>
+                <form asp-controller="Account" asp-action="ResetPass" method="post" enctype="multipart/form-data">
+
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="PassWord">New PassWord</label>
+                            <span asp-validation-for="PassWord" class="text-danger"></span>
+                            <input type="password" class="form-control" asp-for="PassWord" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$!%*?&])[A-Za-z\d$!%*?&]{8,}$" title="Please include at least 1 uppercase character, 1 lowercase character, 1 character special and 1 number" required>
+                        </div>
+                        <input hidden asp-for="Id">
+                    </div>
+
+                    <button type="submit" id="submitButton" class="btn btn-primary submit mb-4">Update</button>
+                    <p>
+                        <a href="#">By clicking Signup, I agree to your terms</a>
+                    </p>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</section>

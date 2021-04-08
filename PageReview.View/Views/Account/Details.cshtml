@@ -1,0 +1,93 @@
+﻿@using Microsoft.AspNetCore.Http
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@model UpdateUser
+@{ ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_UI(1).cshtml"; }
+
+<div class="banner-inner">
+</div>
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="/ui">Home</a>
+    </li>
+    <li class="breadcrumb-item active">Update</li>
+</ol>
+<!--//banner-->
+<!--/main-->
+<section class="main-content-w3layouts-agileits">
+    <div class="container">
+
+        <div class="inner-sec">
+            <div class="login p-5 bg-light mx-auto mw-100">
+
+                <div class="form-row">
+                    <div class="col-md-3 mb-3">
+                        <label asp-for="ImagePath">Avatar</label> :
+                        <div>
+                            <div class="col-2"></div>
+                            <div id="previewImg" class="row">
+                                <div class='row' style='margin:10px;'><img style='width: 200px' class='thumb' src='~/images/Avatar/@ViewBag.avatar'></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label asp-for="UserName"></label> :
+                        <h5>@Model.UserName</h5>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="FullName"></label> :
+                        <h5>@Model.FullName</h5>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Gender"></label> : 
+                        <SPAN>
+                            @Model.Gender
+                    </SPAN>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label asp-for="DoB"></label>: 
+                    <SPAN>@Model.DoB</SPAN>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label asp-for="Company"></label> : 
+                    <span>@Model.Company</span>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label asp-for="Address"></label> : 
+                    <span>@Model.Address</span>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label asp-for="Email"></label> : 
+                    <span>@Model.Email</span>
+                </div>
+            </div>
+
+
+            </div>
+        </div>
+    </div>
+</section>
+@section scripts{
+    <script>window.preview1 = function (input) {
+            $('#previewImg').empty();
+            if (input.files && input.files[0]) {
+
+                $(input.files).each(function (i, value) {
+                    var reader = new FileReader();
+                    reader.readAsDataURL(this);
+                    reader.onload = function (e) {
+                        if (e != null) {
+                            $("#previewImg").append("<div class='row' id='p" + i + "' style='margin:10px;'><img style='width: 200px' class='thumb'  src='" + e.target.result + "'><div></div></div>");
+                        }
+                    }
+                });
+            }
+        }</script>
+}
+

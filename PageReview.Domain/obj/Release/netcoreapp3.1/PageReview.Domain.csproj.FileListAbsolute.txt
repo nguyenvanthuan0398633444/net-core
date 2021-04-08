@@ -1,0 +1,9 @@
+C:\Users\hoangtx\Desktop\PageReview\PageReview\PageReview.Domain\bin\Release\netcoreapp3.1\PageReview.Domain.deps.json
+C:\Users\hoangtx\Desktop\PageReview\PageReview\PageReview.Domain\bin\Release\netcoreapp3.1\PageReview.Domain.dll
+C:\Users\hoangtx\Desktop\PageReview\PageReview\PageReview.Domain\bin\Release\netcoreapp3.1\PageReview.Domain.pdb
+C:\Users\hoangtx\Desktop\PageReview\PageReview\PageReview.Domain\obj\Release\netcoreapp3.1\PageReview.Domain.csprojAssemblyReference.cache
+C:\Users\hoangtx\Desktop\PageReview\PageReview\PageReview.Domain\obj\Release\netcoreapp3.1\PageReview.Domain.AssemblyInfoInputs.cache
+C:\Users\hoangtx\Desktop\PageReview\PageReview\PageReview.Domain\obj\Release\netcoreapp3.1\PageReview.Domain.AssemblyInfo.cs
+C:\Users\hoangtx\Desktop\PageReview\PageReview\PageReview.Domain\obj\Release\netcoreapp3.1\PageReview.Domain.csproj.CoreCompileInputs.cache
+C:\Users\hoangtx\Desktop\PageReview\PageReview\PageReview.Domain\obj\Release\netcoreapp3.1\PageReview.Domain.dll
+C:\Users\hoangtx\Desktop\PageReview\PageReview\PageReview.Domain\obj\Release\netcoreapp3.1\PageReview.Domain.pdb

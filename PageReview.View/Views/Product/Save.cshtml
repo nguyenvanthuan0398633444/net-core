@@ -1,0 +1,167 @@
+﻿@using Microsoft.AspNetCore.Http
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@model CreateProduct
+@{
+    ViewData["Title"] = "Save";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+<div>
+    <input value="@ViewBag.Message" hidden id="value" />
+    @if (ViewBag.Message == "ProductName has been successfully created")
+    {
+        <script type="text/javascript">
+
+                    window.onload = function () {
+                        alert("@ViewBag.Message");
+                    };
+        </script>
+        <p class="alert alert-success" id="succes" value="@ViewBag.Message" onchange="change()">@ViewBag.Message</p> }
+    else if (ViewBag.Message != null)
+    {
+        <script type="text/javascript">
+
+                    window.onload = function () {
+                        alert("@ViewBag.Message");
+                    };
+        </script>
+        <p class="alert alert-danger" id="succes" value="@ViewBag.Message" onchange="change()">@ViewBag.Message</p> }
+</div>
+<form asp-controller="Product" asp-action="Save" method="post" enctype="multipart/form-data">
+    <div class="row form-group">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-9 gallery">
+        </div>
+    </div>
+    <div class="row form-group">
+        <div class="col-md-3">
+            <label asp-for="ProductName">Tên sản phẩm: </label>
+        </div>
+        <div class="col-md-9">
+            <input asp-for="ProductName" class="form-control" placeholder="Tên sản phẩm">
+            <span asp-validation-for="ProductName" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <div class="col-md-3">
+            <label asp-for="Image">Ảnh sản phẩm: </label>
+        </div>
+        <div class="col-md-9">
+            <div class="custom-file">
+                <input type="file" placeholder="Chọn hình ảnh"
+                       asp-for="Image" onchange="preview1(this);">
+                <label class="custom-file-label selectImage" asp-for="Image">Chọn tập tin</label>
+            </div>
+            <span asp-validation-for="Image" class="text-danger"></span>
+            <div>
+                <div class="col-2"></div>
+                <div id="previewImg1" class="row"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <div class="col-md-3">
+            <label asp-for="Images">Thêm sản phẩm: </label>
+        </div>
+        <div class="col-md-9">
+            <div class="custom-file">
+                <input type="file" placeholder="Chọn hình ảnh"
+                       asp-for="Images" multiple="multiple" onchange="preview(this);">
+                <label class="custom-file-label selectImage" asp-for="Images">Chọn tập tin</label>
+            </div>
+            <span asp-validation-for="Images" class="text-danger"></span>
+            <div>
+                <div class="col-2"></div>
+                <div id="previewImg" class="row"></div>
+            </div>
+        </div>
+    </div>
+    <div class="row form-group">
+        <div class="col-md-3">
+            <label asp-for="CategoryId">Danh mục: </label>
+        </div>
+        <div class="col-md-9">
+            <select id="CategoryId" asp-for="CategoryId" class="custom-select">
+            </select>
+            <span asp-validation-for="CategoryId" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row form-group">
+        <div class="col-md-3">
+            <label asp-for="BrandId">Thương hiệu: </label>
+        </div>
+        <div class="col-md-9">
+            <select asp-for="BrandId" class="custom-select">
+            </select>
+            <span asp-validation-for="BrandId" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row form-group">
+        <div class="col-md-3">
+            <label for="Price">Giá: </label>
+        </div>
+        <div class="col-md-9">
+            <span asp-validation-for="Price" class="text-danger"></span>
+            <input asp-for="Price" class="form-control" placeholder="Gõ Giá sản phẩm">
+        </div>
+    </div>
+    <div class="row form-group">
+        <div class="col-md-3">
+            <label for="Description">Bài viết mô tả: </label>
+        </div>
+        <div class="col-md-9">
+            <span asp-validation-for="Description" class="text-danger"></span>
+            <textarea asp-for="Description" class="form-control" placeholder="Viết bài mô tả sản phẩm" rows="15"></textarea>
+        </div>
+    </div>
+    <div class="row form-group">
+        <div class="col-md-3">
+            <label asp-for="StatusProduct">Trạng Thái: </label>
+        </div>
+        <div class="col-md-9">
+            <select asp-for="StatusProduct" class="custom-select">
+            </select>
+            <span asp-validation-for="StatusProduct" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row form-group">
+        <div class="col-md-3">
+            <label for="Date">Ngày mở bán: </label>
+        </div>
+        <div class="col-md-9">
+            <span asp-validation-for="Date" class="text-danger"></span>
+            <input type="date" asp-for="Date" class="form-control" placeholder="Ngày mở bán">
+        </div>
+    </div>
+    <input asp-for="UserId" value="@HttpContextAccessor.HttpContext.Session.GetString("Id")" hidden />
+    <div class="row form-group">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-9">
+            <button class="btn btn-dark">Lưu</button>
+            <a asp-controller="Product" asp-action="Index" class="btn btn-dark mx-3">Huỷ</a>
+        </div>
+    </div>
+
+</form>
+
+@section Scripts{
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+    <script src="~/js/Dashboard/product.js"></script>
+    <script>
+        $('#Description').summernote({
+            placeholder: 'Thêm mô tả',
+            tabsize: 2,
+            height: 100
+        });
+    </script>
+}
+

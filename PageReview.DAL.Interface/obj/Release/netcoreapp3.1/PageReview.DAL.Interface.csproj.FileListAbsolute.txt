@@ -1,0 +1,12 @@
+C:\Users\hoangtx\Desktop\PageReview\PageReview\PageReview.DAL.Interface\bin\Release\netcoreapp3.1\PageReview.DAL.Interface.deps.json
+C:\Users\hoangtx\Desktop\PageReview\PageReview\PageReview.DAL.Interface\bin\Release\netcoreapp3.1\PageReview.DAL.Interface.dll
+C:\Users\hoangtx\Desktop\PageReview\PageReview\PageReview.DAL.Interface\bin\Release\netcoreapp3.1\PageReview.DAL.Interface.pdb
+C:\Users\hoangtx\Desktop\PageReview\PageReview\PageReview.DAL.Interface\bin\Release\netcoreapp3.1\PageReview.Domain.dll
+C:\Users\hoangtx\Desktop\PageReview\PageReview\PageReview.DAL.Interface\bin\Release\netcoreapp3.1\PageReview.Domain.pdb
+C:\Users\hoangtx\Desktop\PageReview\PageReview\PageReview.DAL.Interface\obj\Release\netcoreapp3.1\PageReview.DAL.Interface.csprojAssemblyReference.cache
+C:\Users\hoangtx\Desktop\PageReview\PageReview\PageReview.DAL.Interface\obj\Release\netcoreapp3.1\PageReview.DAL.Interface.AssemblyInfoInputs.cache
+C:\Users\hoangtx\Desktop\PageReview\PageReview\PageReview.DAL.Interface\obj\Release\netcoreapp3.1\PageReview.DAL.Interface.AssemblyInfo.cs
+C:\Users\hoangtx\Desktop\PageReview\PageReview\PageReview.DAL.Interface\obj\Release\netcoreapp3.1\PageReview.DAL.Interface.csproj.CoreCompileInputs.cache
+C:\Users\hoangtx\Desktop\PageReview\PageReview\PageReview.DAL.Interface\obj\Release\netcoreapp3.1\PageReview.DAL.Interface.csproj.CopyComplete
+C:\Users\hoangtx\Desktop\PageReview\PageReview\PageReview.DAL.Interface\obj\Release\netcoreapp3.1\PageReview.DAL.Interface.dll
+C:\Users\hoangtx\Desktop\PageReview\PageReview\PageReview.DAL.Interface\obj\Release\netcoreapp3.1\PageReview.DAL.Interface.pdb

@@ -1,0 +1,74 @@
+﻿@model Password
+@{
+    ViewData["Title"] = "Change password";
+    Layout = "~/Views/Shared/_UI(1).cshtml";
+}
+<div class="banner-inner">
+</div>
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="/ui">Home</a>
+    </li>
+    <li class="breadcrumb-item active">Update</li>
+</ol>
+<!--//banner-->
+<!--/main-->
+<section class="main-content-w3layouts-agileits">
+    <div class="container">
+        <h3 class="tittle">Update PassWord</h3>
+        <div class="inner-sec">
+            <div class="login p-5 bg-light mx-auto mw-100">
+                <div>
+                    <input value="@ViewBag.Message" hidden id="value" />
+                    @if (ViewBag.Id == 1)
+                    {
+                        <script type="text/javascript">
+
+            window.onload = function () {
+                alert("@ViewBag.Message");
+            };
+                        </script>
+                        <p class="alert alert-success" id="succes" value="@ViewBag.Message" onchange="change()">Update is successful!</p> }
+                    else if(ViewBag.Id == 0)
+                    {
+                        <script type="text/javascript">
+
+            window.onload = function () {
+                alert("@ViewBag.Message");
+            };
+                        </script>
+                        <p class="alert alert-danger" id="succes" value="@ViewBag.Message" onchange="change()">Update is Unsuccessful!</p>}
+                </div>
+                <form asp-controller="Account" asp-action="ChangePass" method="post" enctype="multipart/form-data">
+                    
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="OldPassword"></label>
+                            <span asp-validation-for="OldPassword" class="text-danger"></span>
+                            <input type="password" class="form-control" asp-for="OldPassword" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$!%*?&])[A-Za-z\d$!%*?&]{8,}$" title="Please include at least 1 uppercase character, 1 lowercase character, 1 character special and 1 number" required>
+                        </div>
+                            <input hidden asp-for="username">
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="NewPassword"></label>
+                            <span asp-validation-for="NewPassword" class="text-danger"></span>
+                            <input type="password" class="form-control" asp-for="NewPassword" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" title="Please include at least 1 uppercase character, 1 lowercase character, and 1 number." required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="ConfirmPassword"></label>
+                            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                            <input type="password" class="form-control" asp-for="ConfirmPassword" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" title="Please include at least 1 uppercase character, 1 lowercase character, and 1 number." required>
+                        </div>
+                    </div>
+
+                    <button type="submit" id="submitButton" class="btn btn-primary submit mb-4">Update</button>
+                    <p>
+                        <a href="#">By clicking Signup, I agree to your terms</a>
+                    </p>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</section>

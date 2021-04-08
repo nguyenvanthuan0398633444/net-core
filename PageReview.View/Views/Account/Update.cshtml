@@ -1,0 +1,141 @@
+﻿@model UpdateUser
+@{
+    ViewData["Title"] = "Update";
+    Layout = "~/Views/Shared/_UI(1).cshtml";
+}
+
+<div class="banner-inner">
+</div>
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="/ui">Home</a>
+    </li>
+    <li class="breadcrumb-item active">Update</li>
+</ol>
+<!--//banner-->
+<!--/main-->
+<section class="main-content-w3layouts-agileits">
+    <div class="container">
+        <h3 class="tittle">Update</h3>
+        <div class="inner-sec">
+            <div class="login p-5 bg-light mx-auto mw-100">
+                <div>
+                    <input value="@ViewBag.Message" hidden id="value" />
+                    @if (ViewBag.Message == "Update is successful!")
+                    {
+        <script type="text/javascript">
+
+            window.onload = function () {
+                alert("@ViewBag.Message");
+            };
+        </script>
+                        <p class="alert alert-success" id="succes" value="@ViewBag.Message" onchange="change()">Update is successful!</p> }
+                    else if (ViewBag.Message == "Update is unsuccessful!")
+                    {
+                <script type="text/javascript">
+
+            window.onload = function () {
+                alert("@ViewBag.Message");
+            };
+                </script>
+        <p class="alert alert-danger" id="succes" value="@ViewBag.Message" onchange="change()">Update is Unsuccessful!</p>}
+                </div>
+                <form asp-controller="Account" asp-action="Update" method="post" enctype="multipart/form-data">
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="FullName"></label>
+                            <span asp-validation-for="FullName" class="text-danger"></span>
+                            <input type="text" class="form-control" asp-for="FullName" placeholder="" required="">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="UserName"></label>
+                            <span asp-validation-for="UserName" class="text-danger"></span>
+                            <input type="text" class="form-control" asp-for="UserName" placeholder="" required="">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="Gender"></label>
+                            <select asp-for="Gender" class="form-control">
+                                <option value="Nam">Nam</option>
+                                <option value="Nữ">Nữ</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="DoB"></label>
+                            <span asp-validation-for="DoB" class="text-danger"></span>
+                            <input type="date" class="form-control" asp-for="DoB" placeholder="" required="">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="Company"></label>
+                            <span asp-validation-for="Company" class="text-danger"></span>
+                            <input type="text" class="form-control" asp-for="Company" placeholder="" required="">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="Address"></label>
+                            <span asp-validation-for="Address" class="text-danger"></span>
+                            <input type="text" class="form-control" asp-for="Address" placeholder="" required="">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="PhoneNumber"></label>
+                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                            <input type="text" class="form-control" asp-for="PhoneNumber" placeholder="" required="">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="Email"></label>
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                            <input type="text" class="form-control" asp-for="Email" placeholder="" required="">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="ImagePath">Chọn tập tin</label>
+                            <div class="custom-file">
+                                <input type="file" placeholder="Chọn hình ảnh"
+                                       asp-for="ImagePath" onchange="preview1(this);">
+                            </div>
+                            <span asp-validation-for="ImagePath" class="text-danger"></span>
+                            <div>
+                                <div class="col-2"></div>
+                                <div id="previewImg" class="row">
+                                    <div class='row' style='margin:10px;'><img style='width: 200px' class='thumb' src='~/images/Avatar/@ViewBag.avatar'></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" id="submitButton" class="btn btn-primary submit mb-4">Update</button>
+                    <p>
+                        <a href="#">By clicking Signup, I agree to your terms</a>
+                    </p>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</section>
+@section scripts{
+    <script>
+        window.preview1 = function (input) {
+            $('#previewImg').empty();
+            if (input.files && input.files[0]) {
+
+                $(input.files).each(function (i, value) {
+                    var reader = new FileReader();
+                    reader.readAsDataURL(this);
+                    reader.onload = function (e) {
+                        if (e != null) {
+                            $("#previewImg").append("<div class='row' id='p" + i + "' style='margin:10px;'><img style='width: 200px' class='thumb'  src='" + e.target.result + "'><div></div></div>");
+                        }
+                    }
+                });
+            }
+        }
+
+    </script>
+}
+

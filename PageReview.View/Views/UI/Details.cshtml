@@ -1,0 +1,179 @@
+﻿@using Microsoft.AspNetCore.Http
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@model ProductView
+@{ ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_UI1.cshtml"; }
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<style>
+    ul li {
+        display: inline;
+    }
+</style>
+<div class="container">
+    <input hidden id="ProductId" value="@Model.Id" />
+    <input hidden id="BrandId" value="@Model.BrandId" />
+    <input hidden id="CategoryId" value="@Model.CategoryId" />
+    <input hidden id="UserId" value="@HttpContextAccessor.HttpContext.Session.GetString("Id")" />
+    @if (@Model.Description != null)
+    {@*<input hidden id="gameid1" value="@Model.Categorys.FirstOrDefault().CategoryId" />*@ }
+else
+{
+<input hidden id="gameid1" value="1" />}
+
+    <h1 style="font-size: 4em; line-height: 1.1; color: #29292f;" class="col-md-8 blog-left">
+        @Model.ProductName
+    </h1>
+    <p style="font-size: 2em; line-height: 1.1; color: #29292f;" class="col-md-8 blog-left">
+       Giá: @Convert.ToDecimal(Model.Price).ToString("#,##0.00") VND
+    </p>
+
+    <div class="col-md-8 blog-left">
+        <div id="slideimages"></div>
+        <div id="addcheck"></div>
+        <h2>@Model.NumberofVote/5  <i class="fas fa-star"></i></h2> (@Model.NumberVote Vote)
+    </div>
+
+</div>
+<div class="container">
+    <div class="blog">
+        <div class="container">
+            <div class="col-md-8 blog-left">
+                <div class="blog-info">
+                    <div class="blog-info-text">
+                        <hr />
+                        @Html.Raw(Model.Description)
+                    </div>
+                    <div class="comment-icons">
+                        <h3>
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        <i class="far fa-calendar-alt"></i>  @Model.DateofSale
+                                    </a>
+                                </li>
+                                <li class="mx-2">
+                                    <a href="#">
+                                        <i class="fas fa-star"></i>  @Model.NumberofVote
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="far fa-comment"></i>  @Model.NumberofComment
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </h3>
+                    </div>
+
+                </div>
+                <div class="response">
+                    <h4>Comment (@Model.NumberofComment)</h4>
+                    <div id="formRep" class="coment-form">
+                        <h4>Bình luận</h4>
+                        <form>
+                            <input hidden id="SaveId" value="0">
+                            <input hidden id="CommentId" value="0">
+                            <textarea type="text" style="width:100%" id="text" placeholder="Bình Luận"></textarea>
+                            <a class="btn btn-primary" value="Phản hồi" onclick="Post()">Bình Luận</a>
+                        </form>
+                    </div>
+                    <div id="add">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="loginUser">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h3 class="modal-title " style="font-size: 30px;color:#FF6F61">ĐĂNG NHẬP</h3>
+                <button type="button" class="close" data-dismiss="modal">×</button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form id="fromLoginUser">
+                    <div class="row form-group" style="margin-left: 20px;">
+                        <label for="EmailLogin" class="col-3">Tên đăng nhập:</label>
+                        <div class="col-9">
+                            <input type="text" class="form-control" placeholder="Tên đăng nhập"
+                                   id="UserName" name="UserName"
+                                   data-rule-required="true"
+                                   data-msg-required="Tên đăng nhập không được để trống"
+                                   data-rule-maxlength="100"
+                                   data-msg-maxlength="Tên đăng nhập không hợp lệ">
+                        </div>
+                    </div>
+                    <div class="row form-group" style="margin-left: 20px;">
+                        <label for="LoginPassword" class="col-3">Mật khẩu:</label>
+                        <div class="col-9">
+                            <input type="password" class="form-control" placeholder="Mật khẩu"
+                                   id="PassWord" name="PassWord"
+                                   data-rule-required="true"
+                                   data-msg-required="Mật khẩu không được để trống"
+                                   data-rule-maxlength="100"
+                                   data-msg-maxlength="Mật khẩu không hợp lệ">
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <a href="javascript:;" class="btn btn-success" onclick="login()">Đăng nhập</a>
+                <a type="button" class="btn btn-danger" onclick="closeModal()">Hủy</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script src="~/js/UI/Add.js"></script>
+    <script>
+        var slideIndex = 1;
+        showDivs(slideIndex);
+
+        function plusDivs(n) {
+            showDivs(slideIndex += n);
+        }
+
+        function showDivs(n) {
+            var i;
+            var x = document.getElementsByClassName("mySlides");
+            if (n > x.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = x.length }
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            x[slideIndex - 1].style.display = "block";
+        }
+        function login() {
+        var Obj = {};
+        Obj.userName = $('#UserName').val();
+        Obj.password = $('#PassWord').val();
+            $.ajax({
+                url: '/Account/LoginOk',
+                method: 'POST',
+                data: Obj,
+                success: function (response) {
+                    if (response == "Login Success") {
+                        $('#loginUser').hide();
+                        location.reload();
+                    }
+                    else
+                        alert('Username or password is incorrect.');
+                   
+                }
+            });
+        }
+        function closeModal() {
+            $('#loginUser').hide();
+        }
+    </script>
+}
+
